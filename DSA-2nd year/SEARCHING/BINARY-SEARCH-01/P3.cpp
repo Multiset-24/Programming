@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//find the smallest non negative element in it.
 // O(n) approach
 int On_approach(vector<int> &v)
 {
