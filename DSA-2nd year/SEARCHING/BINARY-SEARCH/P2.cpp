@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-//the first occurnece of 'x' in the array.if 'x' does not exist return -1
+//the first occurence of 'x' in the array.if 'x' does not exist return -1
 // go for leetcode 34
 void first_occurence(vector<int>&v,int target){
     sort(v.begin(),v.end());
