@@ -4,6 +4,7 @@ using namespace std;
 long long pow(long long a,long long b){
     if(a==1) return 1;
     if(b==0) return 1;
+    //hello saurav i am from online
     int res;
     res=a*pow(a,b-1);
     return res;
