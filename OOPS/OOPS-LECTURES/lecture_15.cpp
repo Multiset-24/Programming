@@ -36,5 +36,6 @@ number n5(n2);
 n5.display();
 number n6=n2;
 n6.display();
+n1.display();
     return 0;
 }
