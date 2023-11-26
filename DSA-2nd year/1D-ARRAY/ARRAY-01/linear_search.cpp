@@ -6,6 +6,7 @@ void linear_search(int n,int arr[],int target){
        {
         if(target==arr[i]){
             cout<<"The index of the element is-"<<i;
+            break;
         }
         else{
             found=false;
