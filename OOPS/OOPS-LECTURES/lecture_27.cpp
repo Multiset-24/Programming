@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-//constructors in derived class
+// constructors in derived class
 /*
 CASE 1----->
 class B:public A{
@@ -15,36 +15,46 @@ class A: public B,virtual public C{
     //order of execution of constructor -> c()then B()then A()
 }
 */
-class students{
-    protected:
+class students
+{
+protected:
     int roll_num;
     string name;
-    public:
-    students(int rn,string n){
-        roll_num=rn;
-        name=n;
-        cout<<"This has been called out -students";
+
+public:
+    students(int rn, string n)
+    {
+        roll_num = rn;
+        name = n;
+        cout << "This has been called out -students";
     }
 };
-class POR{
-    protected:
+class POR
+{
+protected:
     string posi_name;
-    public:
-    POR(string por_N){
-        por_N=posi_name;
-         cout<<"This has been called out -POR";
+
+public:
+    POR(string por_N)
+    {
+        posi_name = por_N;
+        cout << "This has been called out -POR";
     }
 };
-class rank:public POR, public students{
-    protected:
+class rank : public POR, public students
+{
+protected:
     int ran;
-    public:
-    rank(int rk,string por_N,int rn,string n):POR(por_N),students(rn,n){
-        rk=ran;
-        cout<<"This has been called out-rank";
+
+public:
+    rank(int rk, string por_N, int rn, string n) : POR(por_N), students(rn, n)
+    {
+        rk = ran;
+        cout << "This has been called out-rank";
     }
 };
-int main() {
-    rank r(2,"monitor",69,"snake");
+int main()
+{
+    rank r(2, "monitor", 69, "snake");
     return 0;
 }

@@ -5,9 +5,9 @@ class employee
 {
     private:
     int id;
-    static int count;// static int count=25; will give error here
 
 public:
+    static int count;// static int count=25; will give error here
     void setdata(void)
     {
         cout << "enter ID" << endl;

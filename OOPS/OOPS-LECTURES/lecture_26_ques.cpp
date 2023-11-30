@@ -14,7 +14,7 @@ public:
          res.imag = imag + obj.imag;
          return res;
     }
-    void print() { cout << real << " + i" << imag << endl; }
+    void print() { cout << real <<" + "<< imag << "i"<<endl; }
 };
 
 int main()
