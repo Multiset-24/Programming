@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//reverse first k elements in the queue
 int main() {
- //METHOD 01--------------->Using an extra stack
-
+ 
     return 0;
 }
