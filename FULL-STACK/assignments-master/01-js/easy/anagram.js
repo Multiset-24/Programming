@@ -5,11 +5,11 @@
 */
 
 function isAnagram(str1, str2) {
-      let arr1=new Array(26,0);
-      let arr2=new Array(26,0);
-      for(let i=0;i<str1.length;i++){
-          console.log(str1[i]);
-      }
+  str1.sort();
+  str2.sort();
+
+  if(str1==str2) return true;
+  else return false;
 }
 
 module.exports = isAnagram;

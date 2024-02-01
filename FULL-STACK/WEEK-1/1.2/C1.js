@@ -45,7 +45,7 @@
 
   console.log(person1.name, person2.name);
 
-  const array_objects = [
+  let array_objects = [
     {
       name: "saurav",
       age: 21,
@@ -60,10 +60,10 @@
 
   console.log(array_objects[0].name, array_objects[1].name);
 
-  var b = 5;
+  let b = 5;
 
   console.log(b);
-  b = 10;
+  b = "hello";
 
   console.log(b);
 
