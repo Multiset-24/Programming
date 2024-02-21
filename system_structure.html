@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database System Components</title>
+<style>
+  /* Style for hierarchical structure */
+  .node {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  .parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .child {
+    padding-left: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="tree">
+  <div class="node parent">Users
+    <div class="child">
+      <div class="node child">Naive Users</div>
+      <div class="node child">Application Programmers</div>
+      <div class="node child">Sophisticated Users</div>
+    </div>
+  </div>
+  <div class="node parent">Components
+    <div class="child">
+      <div class="node child">Application Interfaces</div>
+      <div class="node child">Query Tools</div>
+      <div class="node child">Application Programs</div>
+      <div class="node parent">Query Processor
+        <div class="child">
+          <div class="node child">DML Compiler and Organizer</div>
+          <div class="node child">Query Evaluation Engine</div>
+          <div class="node child">DDL Interpreter</div>
+        </div>
+      </div>
+      <div class="node parent">Storage Manager
+        <div class="child">
+          <div class="node child">Buffer Manager</div>
+          <div class="node child">File Manager</div>
+        </div>
+      </div>
+      <div class="node child">Authorization and Integrity Manager</div>
+      <div class="node child">Transaction Manager</div>
+      <div class="node child">Data Dictionary</div>
+      <div class="node child">Indices</div>
+      <div class="node child">Statistical Data</div>
+      <div class="node child">Compiler and Linker</div>
+      <div class="node child">Object Code</div>
+    </div>
+  </div>
+  <div class="node parent">Relationships
+    <div class="child">
+      <div class="node child">Users interact with:</div>
+      <div class="node child">Application Programs interact with:</div>
+      <div class="node child">Query Processor includes:</div>
+      <div class="node child">Storage Manager includes:</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

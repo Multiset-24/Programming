@@ -1,17 +1,6 @@
 {
     "files.associations": {
-        "ostream": "cpp",
-        "iostream": "cpp",
-        "unordered_map": "cpp",
-        "iterator": "cpp",
-        "xhash": "cpp",
-        "xutility": "cpp",
-        "limits": "cpp",
-        "utility": "cpp",
-        "deque": "cpp",
-        "list": "cpp",
-        "vector": "cpp",
-        "xstring": "cpp"
+        "unordered_set": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

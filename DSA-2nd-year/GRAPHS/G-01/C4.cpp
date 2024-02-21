@@ -35,7 +35,7 @@ int main() {
     while(e--){
         int s,d;
         cin>>s>>d;
-        add_edge(s,d,false);
+        add_edge(s,d);
     }
 
     display();

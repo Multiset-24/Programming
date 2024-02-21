@@ -1,8 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+// write a code to print breadth first traversal for the graph
+
+#define mod 1000000007
 vector<unordered_set<int>> graph;
 int v; // no of  vertices
-// unordered_set<int> visited;
+unordered_set<int> visited;
+vector<int> result;
+
 void add_edge(int src, int dest, bool bi_dir = true)
 {
     graph[src].insert(dest);
@@ -26,35 +32,30 @@ void display()
         cout << endl;
     }
 }
-// find  the number of connected  coomponents in the graph using dfs or bfs
-// NCC=no of connected components
-unordered_set<int>visited;
-void dfs(int idx)
-{
-    visited.insert(idx);
 
-    for (auto ele : graph[idx])
+void bfs(int start)
+{
+    queue<int> q;
+
+    q.push(start);
+    visited.insert(start);
+    while (q.size() > 0)
     {
-        if (not visited.count(ele))
+        int temp = q.front();
+        cout<<temp<<" ";
+        q.pop();
+        for (auto neighbour : graph[temp])
         {
-            dfs(ele);
+            if (not visited.count(neighbour))
+            {
+                q.push(neighbour);
+                visited.insert(neighbour);
+            }
         }
     }
 }
 
-int NCC(int count)
-{
-    for (int i = 0; i < graph.size(); i++)
-    {
-        if (not visited.count(i) )
-        {
-            dfs(i);
-            count++;
-        }
-    }
-    return count;
-}
-#define mod 1000000007
+
 
 int main()
 {
@@ -69,7 +70,9 @@ int main()
         cin >> s >> d;
         add_edge(s, d);
     }
-    int count = 0;
-    cout << NCC(count);
+    
+    int start;
+    cin>>start;
+    bfs(start);
     return 0;
 }

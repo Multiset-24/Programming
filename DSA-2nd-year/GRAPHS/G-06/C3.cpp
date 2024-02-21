@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-// improved version of dsu-----this includes the use of size and rank factor
+// improved version of dsu-----this includes the use of size and path compression factor
 
 #define mod 1000000007
 
