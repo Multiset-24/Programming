@@ -59,7 +59,6 @@ int kruskals(vector<edge> &edges, int n)
 {
     sort(edges.begin(),edges.end(),cmp);
    
-
     vector<int>rank(n,0);
     vector<int>parent(n);
 
@@ -100,7 +99,7 @@ int main()
 
     for(int i=0;i<e;i++){
         int strt,end,weight;
-
+        
         cin>>strt>>end>>weight;
 
         edge e(strt,end,weight);
