@@ -5,71 +5,72 @@ using namespace std;
 #define ll long long
 typedef pair<int, int> pp;
 
-vector<list<pp>> gr;
+vector<vector<pp>> gr;
 
-void add_edge(int u, int v, int wt, bool bidir = true) {
-    gr[u].push_back({v, wt});
-    if (bidir) {
-        gr[v].push_back({u, wt});
-    }
+void add_edge(int a, int b, int wt, bool bidir = true)
+{
+    gr[a].push_back({b, wt});
+    if (bidir)
+        gr[b].push_back({a, wt});
 }
-
-class cmp {
-public:
-    bool operator()(pp p1, pp p2) {
-        return p1.first > p2.first;
+class cmp
+{
+    public:
+    bool operator()(pp &p1, pp &p2)
+    {
+        return p1.second > p2.second;
     }
 };
 
-ll prims(int src, int n) {
+int prims(int src, int v, int e)
+{
+    // data-structures used
+
     priority_queue<pp, vector<pp>, cmp> pq;
-    vector<int> par(n, -1);
-    vector<bool> visited(n, false);
-    vector<int> mp(n, INT_MAX);
-    pq.push({0, src});
-    mp[src] = 0;
+    vector<int> parent(v,-1);
+    vector<int> key(v, INT_MAX);
+    unordered_set<int> visited;
 
-    int edgeCount = 0;
-    ll result = 0;
-
-    while (edgeCount < n && pq.size() > 0) {
+    pq.push({src, 0});
+    key[src]=0;
+    int min_sum = 0;
+    while (pq.size() > 0 && visited.size() < v)
+    {
         pp curr = pq.top();
         pq.pop();
 
-        if (visited[curr.second]) continue;
+        if (visited.count(curr.first))
+            continue;
+        visited.insert(curr.first);
+        min_sum += curr.second;
 
-        visited[curr.second] = true;
-        edgeCount++;
-        result += curr.first;
-
-        for (auto neighbour : gr[curr.second]) {
-            if (!visited[neighbour.first] && mp[neighbour.first] > neighbour.second) {
-                pq.push({neighbour.second, neighbour.first});
-                par[neighbour.first] = curr.second;
-                mp[neighbour.first] = neighbour.second;
+        for (auto neighbour : gr[curr.first])
+        {
+            if (!visited.count(neighbour.first) && key[neighbour.first] > neighbour.second)
+            {
+                parent[neighbour.first] = curr.first;
+                key[neighbour.first] = neighbour.second;
+                pq.push({neighbour.first, neighbour.second});
             }
         }
     }
-
-    return result;
+    return min_sum;
 }
-
-int main() {
+int main()
+{
     int v, e;
     cin >> v >> e;
-
+    gr.clear();
     gr.resize(v);
-    while (e--) {
-        int a, b, c;
-        cin >> a >> b >> c;
+    while (e--)
+    {
+        int a, b, wt;
+        cin >> a >> b >> wt;
 
-        add_edge(a, b, c);
+        add_edge(a, b, wt);
     }
-
     int src;
     cin >> src;
-
-    cout << prims(src, v) << endl;
-
+    cout << prims(src, v, e);
     return 0;
 }
