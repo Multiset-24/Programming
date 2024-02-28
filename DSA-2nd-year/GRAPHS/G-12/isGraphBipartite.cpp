@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+// this is an
 #define mod 1000000007
 #define ll long long
 typedef pair<int,int> pp;
@@ -33,7 +33,7 @@ public:
         return true;
     }
     bool isBipartite(vector<vector<int>>& graph) {
-        vector<bool>visited(graph.size(),-1);
+        vector<bool>visited(graph.size(),false);
         vector<int>color(graph.size(),-1);
         for(int i=0;i<graph.size();i++){
             if(!visited[i]){
@@ -49,6 +49,6 @@ int main() {
     Solution s;
     vector<vector<int>>graph={{1,3},{0,2},{1,3},{0,2}};
     cout<<s.isBipartite(graph);
-    
+
     return 0;
 }
