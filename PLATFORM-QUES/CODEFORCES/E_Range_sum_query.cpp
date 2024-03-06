@@ -6,19 +6,7 @@ using namespace std;
 typedef pair<int,int> pi;
 #define u_mp unordered_map 
 #define u_st unordered_set 
-template<typename T>
 
-// Function templates for reading input
-void read(T& t) {
-    cin >> t;
-}
-template<typename T, typename... Args>
-void read(T& t, Args&... args) {
-    cin >> t;
-    read(args...);
-}
-
-// Debugging macro
 #define DEBUG
 #ifdef DEBUG
 #define debug(x) cout << #x << " = " << x << endl
@@ -27,10 +15,30 @@ void read(T& t, Args&... args) {
 #endif
 
 #define endl '\n'
-
+ 
 int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
+    int n,Q;
+    cin>>n>>Q;
+
+    vector<int>prefix_sum(n+1);
+
+    for(int i=1;i<=n;i++){
+        int x;
+        cin>>x;
+        if(i==1) prefix_sum[1]=x;
+        else{
+            prefix_sum[i]=prefix_sum[i-1]+x;
+        }
+    }
+
+    while(Q--){
+        int strt,end;
+        cin>>strt>>end;
+
+        cout<<prefix_sum[end]-prefix_sum[strt-1]<<endl;
+    }
     return 0;
 }
