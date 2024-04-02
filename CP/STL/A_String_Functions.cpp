@@ -98,6 +98,14 @@ int32_t main()
         {
             cout << s.front() << endl;
         }
+        else if(operation=="erase"){
+            int l,r;
+            read(l,r);
+            if(l>r) swap(l,r);
+            l--;
+            r--;
+            s.erase(l,r-l+1); // syntax- erase(starting_index, length)
+        }
     }
 
     return 0;

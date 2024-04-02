@@ -14,7 +14,8 @@
         "xutility": "cpp",
         "algorithm": "cpp",
         "initializer_list": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "unordered_map": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
