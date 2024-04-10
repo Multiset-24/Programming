@@ -15,7 +15,8 @@
         "algorithm": "cpp",
         "initializer_list": "cpp",
         "xhash": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "limits": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
