@@ -31,31 +31,18 @@ void read(T& t, Args&... args) {
 int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int a,b;
-    read(a,b);
+    
+    int n,k;
+    read(n,k);
 
-    int cnt=0;
-    u_st<int>power_of_5;
+    vector<int>factors;
 
-    for(int i=1;i<=a+b;i++)
-    {
-        if(i%5==0)
-        {
-            power_of_5.insert(i);
-        }
+    for(int i=2;i<n;i++){
+        if(n%i==0) factors.push_back(i);
     }
-    for(int i=1;i<=min(a,b);i++)
-    {
-       for(auto x:power_of_5)
-       {
-           if(x-i<=max(a,b) && x-i>0)
-           {
-                cout<<i<<" "<<x-i<<endl;
-               cnt++;
-           }
-       }
+    int i=0;
+    while(k>1){
+        cout<<factor[i]
     }
-
-    cout<<cnt<<endl;
     return 0;
 }
