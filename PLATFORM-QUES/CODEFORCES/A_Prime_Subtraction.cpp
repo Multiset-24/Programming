@@ -32,17 +32,14 @@ int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n,k;
-    read(n,k);
+    int q;
+    read(q);
 
-    vector<int>factors;
+    while(q--){
+        int x,y;
+        read(x,y);
 
-    for(int i=2;i<n;i++){
-        if(n%i==0) factors.push_back(i);
-    }
-    int i=0;
-    while(k>1){
-        cout<<factor[i]
+        (x-y==1)?cout<<"NO"<<endl:cout<<"YES"<<endl;
     }
     return 0;
 }
