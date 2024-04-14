@@ -31,6 +31,14 @@ void read(T& t, Args&... args) {
 int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+    using namespace std::chrono;
+    auto start = high_resolution_clock::now();
+
+
+
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+
+    cerr << "Time taken: " << duration.count() << " microseconds" << endl;
     return 0;
 }
