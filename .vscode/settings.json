@@ -18,5 +18,7 @@
         "unordered_map": "cpp",
         "limits": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "cph.general.defaultLanguageTemplateFileLocation": "C:\\Users\\soura\\OneDrive\\Desktop\\Programming\\DSA-AND-CP\\CP\\CP-BASICS\\my_competitive_template.cpp",
+    "cph.general.firstTime": true
 }

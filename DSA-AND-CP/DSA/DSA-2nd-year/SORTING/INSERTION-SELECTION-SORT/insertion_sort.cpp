@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // algo for insertion sort and it's code
-//ek element aage se shuru karo aur while look mai tb tk chalao jb tk pichhe vala element aage vale se bada ho phir exit lelo
+//ek element aage se shuru karo aur while loop mai tb tk chalao jb tk pichhe vala element aage vale se bada ho phir exit lelo
 vector<int> sort_insert(vector<int> &v)
 {
     int n = v.size();

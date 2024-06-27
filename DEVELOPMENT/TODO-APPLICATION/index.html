@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>To-Do List</h2>
+
+<input id="todoInput" type="text" placeholder="Enter a new task">
+<button onclick="newTodo()">Add</button>
+
+<ul id="todoList">
+</ul>
+
+<script>
+function newTodo() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("todoInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("todoList").appendChild(li);
+  }
+  document.getElementById("todoInput").value = "";
+
+  li.onclick = function() {
+    var ul = this.parentElement;
+    ul.removeChild(this);
+  }
+}
+</script>
+
+</body>
+</html>

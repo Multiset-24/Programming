@@ -1,1 +1,0 @@
-//this tutorial is about fetch api 

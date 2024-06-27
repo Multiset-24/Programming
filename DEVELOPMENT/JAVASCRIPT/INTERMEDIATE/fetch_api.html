@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>link html to js and learn the use of fetch</title>
+</head>
+<body>
+    <script>
+        // function fakedata(){
+        //     fetch('https://fakerapi.it/api/v1/persons')
+        //     .then(response => response.json())
+        //     .then(json => console.log(json))
+        // }
+
+        /*OR WE CAN USE THE ASYNC AWAIT SYNTAX FOR THE ASYNC CALLS*/
+        async function fakedata(){
+            let response = await fetch('https://fakerapi.it/api/v1/persons')
+            let data = await response.json()
+            console.log(data)
+        }
+    </script>
+    <!--button syntax
+    <button onclick="fakedata()">Click me</button>-->
+    <button  onclick="fakedata()">click here</button>
+</body>
+</html>

@@ -31,11 +31,38 @@ void read(T& t, Args&... args) {
 int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int n;
-    read(n);
+    using namespace std::chrono;
+    auto start = high_resolution_clock::now();
+
+    string s;
+    read(s);
+
+    int n=s.size();
+
+    vector<int>a;
+    for(int i=0;i<n;i++){
+        a.push_back(s[i]-'0');
+    }
+
+    int ans=(int)max(a[0]-1,(int)1)*(int)pow(9,n-1);
+    int p=1;
+    for(int i=0;i<n;i++){
+        p*=a[i];
+    }
+
+    ans=max(ans,p);
+    p=1;
+    for(int i=0;i<n;i++){
+        ans=(int)max(ans,(int)p*(a[i]-1)*(int)pow(9,n-1-i));
+        p*=a[i];
+    }
 
 
-    
+    cout<<ans<<endl;
+
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+
+    cerr << "Time taken: " << duration.count() << " microseconds" << endl;
     return 0;
 }

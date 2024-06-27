@@ -67,7 +67,6 @@ app.post("/health-checkup",(req,res)=>{
             res.status(400).send("Invalid data");
         }
 
-        
      */
 
     res.send(`The length of kidneys is ${kidneylength}`);

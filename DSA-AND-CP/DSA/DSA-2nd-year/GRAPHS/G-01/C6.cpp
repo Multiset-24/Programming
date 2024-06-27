@@ -28,24 +28,22 @@ void display() {
 }
 
 void dfs(int start, int end, vector<int> &path) {
-    if (start == end) {
-        path.push_back(start);
-        result.push_back(path);
-        path.pop_back();
-        return;
-    }
-
     visited.insert(start);
+    path.push_back(start);
 
-    for (auto neighbour : graph[start]) {
-        if (not visited.count(neighbour)) {
-            path.push_back(neighbour);
-            dfs(neighbour, end, path);
+    if (start == end) {
+        result.push_back(path);
+    } else {
+        for (auto neighbour : graph[start]) {
+            if (visited.count(neighbour) == 0) {
+                dfs(neighbour, end, path);
+            }
         }
-        path.pop_back();
     }
-}
 
+    path.pop_back();
+    visited.erase(start);
+}
 void allpath(int start, int end) {
     vector<int> path;
     dfs(start, end, path);

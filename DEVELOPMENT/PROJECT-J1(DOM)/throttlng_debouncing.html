@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--this is about throttling and debouncing which basically decreases the number of times the html makes the backend call-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let timer;
+    function debouncing(){
+        clearTimeout(timer);
+        timer=setTimeout(function(){
+            Simple_interest();
+        },1000);
+    }
+    async function Simple_interest(){
+        const a=parseInt(document.getElementById("n1").value);
+        const b=parseInt(document.getElementById("n2").value);
+        const c=parseInt(document.getElementById("n3").value);
+        
+        const response=await fetch(`https://sum-server.100xdevs.com/interest?principal=${a}&rate=${b}&time=${c}`);
+        const res=await response.text();
+        document.getElementById("result").innerHTML=res;
+    }
+
+</script>
+<body>
+    a=<input   type="number" placeholder="Enter principal" id="n1"></input><br></br>
+    b=<input   type="number" placeholder="Enter rate" id="n2"></input><br></br>
+    c=<input   type="number" placeholder="Enter duration " id="n3"></input><br></br>
+    <button onclick="debouncing()">ADD</button><br></br>
+    <p id="result"></p>
+</body>
+</html>

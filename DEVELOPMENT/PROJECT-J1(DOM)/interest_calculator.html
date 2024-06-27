@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    async function Simple_interest(){
+        const a=parseInt(document.getElementById("n1").value);
+        const b=parseInt(document.getElementById("n2").value);
+        const c=parseInt(document.getElementById("n3").value);
+        
+        const response=await fetch(`https://sum-server.100xdevs.com/interest?principal=${a}&rate=${b}&time=${c}`);
+        const res=await response.text();
+        document.getElementById("result").innerHTML=res;
+    }
+
+</script>
+<body>
+    a=<input   type="number" placeholder="Enter principal" id="n1"></input><br></br>
+    b=<input   type="number" placeholder="Enter rate" id="n2"></input><br></br>
+    c=<input   type="number" placeholder="Enter duration " id="n3"></input><br></br>
+    <button onclick="Simple_interest()">ADD</button><br></br>
+    <p id="result"></p>
+</body>
+</html>
