@@ -71,35 +71,6 @@ vector<pi> Prime_factors(int n)
 
     return factors;
 }
-vector<int> Primes(int n)
-{
-    vector<bool> is_prime(n + 1, true);
-
-    is_prime[0] = is_prime[1] = false;
-
-    for (int i = 2; i * i <= n; i++) // Sieve of Eratosthenes
-    {
-        if (is_prime[i])
-        {
-            for (int j = i * i; j <= n; j += i)
-            {
-                is_prime[j] = false;
-            }
-        }
-    }
-
-    vector<int> primes;
-    for (int i = 2; i <= n; i++)
-    {
-        if (is_prime[i])
-        {
-            primes.push_back(i);
-        }
-    }
-
-    return primes;
-}
-
 // Debugging macro
 #define DEBUG
 #ifdef DEBUG
@@ -110,20 +81,60 @@ vector<int> Primes(int n)
 
 #define endl '\n'
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
-
 void jarvis()
 {
+    int n;
+    cin >> n;
+
+    r_vector(v, n);
+
+    vector<int> p(n+1,0);
+
+    for (int i = 1; i <= n; i++)
+    {
+        p[i] = p[i - 1] + v[i];
+    }
     
+    vector<int>d;
+    
+    for(int i=1;i*i<=p[n];i++){
+        if(p[n]%i==0){
+            d.push_back(i);
+            
+            if(n/i!=i){
+                d.push_back(p[n]/i);
+            }
+        }
+    }
+    vector<int> ans;
+    for (int i = 0; i <d.size(); i++)
+    {
+        int sum = 0;
+        for (int j = 1; j <= n; j++)
+        {
+            sum += v[j];
+            if (sum > d[i])
+            {
+                break;
+            }
+            else if (sum == d[i])
+            {
+                sum = 0;
+            }
+
+            if (j == n && sum==0)
+            {
+                ans.push_back(d[i]);
+            }
+        }
+    }
+    sort(ans.begin(),ans.end());
+    for (auto it : ans)
+    {
+        cout << it << " ";
+    }
+
+    cout << endl;
 }
 
 int32_t main()
@@ -134,7 +145,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin>>q;
     while (q--)
     {
         jarvis();

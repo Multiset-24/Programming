@@ -120,10 +120,49 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+int queens[10];
 
+bool check(int level,int col){
+    for(int i=0;i<level;i++){
+        int r=i;
+        int c=queens[i];
+
+        if(col==c || abs(col-c)==abs(level-r)){
+            return 0;
+        }
+    }
+
+    return 1;
+}
+int rec(vector<vector<char>>&board,int level){
+    if(level==8) return 1;//base case
+
+
+    int ans=0;
+    
+    for(int col=0;col<8;col++){
+        if(check(level,col) && board[level][col]!='*'){
+            board[level][col]='Q';
+            queens[level]=col;
+            ans+=rec(board,level+1);
+            queens[level]=-1;
+            board[level][col]='.';
+        }
+    }
+
+    return ans;
+}
 void jarvis()
 {
-    
+    vector<vector<char>>board(8,vector<char>(8,'.'));
+
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            cin>>board[i][j];
+        }
+    }
+
+    cout<<rec(board,0);
 }
 
 int32_t main()
@@ -134,7 +173,8 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
+    memset(queens,-1,sizeof(queens));
     while (q--)
     {
         jarvis();

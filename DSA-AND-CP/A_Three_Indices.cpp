@@ -71,35 +71,6 @@ vector<pi> Prime_factors(int n)
 
     return factors;
 }
-vector<int> Primes(int n)
-{
-    vector<bool> is_prime(n + 1, true);
-
-    is_prime[0] = is_prime[1] = false;
-
-    for (int i = 2; i * i <= n; i++) // Sieve of Eratosthenes
-    {
-        if (is_prime[i])
-        {
-            for (int j = i * i; j <= n; j += i)
-            {
-                is_prime[j] = false;
-            }
-        }
-    }
-
-    vector<int> primes;
-    for (int i = 2; i <= n; i++)
-    {
-        if (is_prime[i])
-        {
-            primes.push_back(i);
-        }
-    }
-
-    return primes;
-}
-
 // Debugging macro
 #define DEBUG
 #ifdef DEBUG
@@ -110,20 +81,47 @@ vector<int> Primes(int n)
 
 #define endl '\n'
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
-
 void jarvis()
 {
-    
+    int n;
+    cin >> n;
+
+    r_vector(v, n);
+    for (int i = 1; i <= n; i++)
+    {
+        int p = -1, q = -1, r = -1;
+        int j = i - 1;
+        q = i;
+        while (j >= 1)
+        {
+            if (v[j] < v[i])
+            {
+                p = j;
+                break;
+            }
+            j--;
+        }
+
+        int k = i + 1;
+        while (k <= n)
+        {
+            if (v[k] < v[i])
+            {
+                r = k;
+                break;
+            }
+            k++;
+        }
+
+        if (p != -1 && q != -1 && r != -1)
+        {
+            cout << "YES" << endl;
+            cout << p << " " << q << " " << r << endl;
+            return;
+        }
+    }
+
+    cout << "NO" << endl;
 }
 
 int32_t main()
@@ -133,7 +131,7 @@ int32_t main()
     using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
-    int q = 1;
+    int q;
     cin >> q;
     while (q--)
     {

@@ -109,21 +109,40 @@ vector<int> Primes(int n)
 #endif
 
 #define endl '\n'
+int cnt = 0;
+vector<pi>steps;
+void hanoi(int n, int s, int h, int d)
+{
+    if (n == 1)
+    {
+        steps.push_back({s,d});
+        cnt++;
+        return;
+    }
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
+    hanoi(n - 1, s, d, h);
+    hanoi(1, s, h, d);
+    hanoi(n-1,h,s,d);
+
+    
+    return;
+}
+
 
 void jarvis()
 {
-    
+    int n;
+    cin >> n;
+
+    steps.clear();
+    cnt=0;
+    hanoi(n, 1, 2, 3);
+
+    cout<<cnt<<endl;
+
+    for(auto it:steps){
+        cout<<it.first<<" "<<it.second<<endl;
+    }
 }
 
 int32_t main()
@@ -134,7 +153,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

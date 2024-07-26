@@ -121,9 +121,29 @@ Saurav:Hello Jarvis !!
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
 
+int pedal(int c,int r){
+    vector<vector<int>>pt;
+
+    for(int i=0;i<31;i++){
+        vector<int>line(i+1,1);
+        pt.push_back(line);
+    }
+
+    for(int i=0;i<31;i++){
+        for(int j=0;j<pt[i].size();j++){
+            if(j!=0 && j!=i){
+                pt[i][j]=pt[i-1][j]+pt[i-1][j-1];
+            }
+        }
+    }
+    return pt[c][r];
+}
 void jarvis()
 {
-    
+    int c,r;
+    cin>>c>>r;
+
+    cout<<pedal(c,r);
 }
 
 int32_t main()
@@ -134,7 +154,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

@@ -110,20 +110,46 @@ vector<int> Primes(int n)
 
 #define endl '\n'
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
-
 void jarvis()
 {
-    
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<char>> game(n, vector<char>(m, ' '));
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cin >> game[i][j];
+        }
+    }
+
+    string s;
+    cin >> s;
+
+    for (int i = 0; i < s.s.size(); i++)
+    {
+        char dir = s[i];
+
+        if (dir == 'S')
+        {
+   
+        }
+        else if (dir == 'N')
+        {
+
+        }
+        else if (dir == 'E')
+        {
+
+        }
+        else if (dir == 'W')
+        {
+
+        }
+
+    }
 }
 
 int32_t main()
@@ -134,7 +160,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

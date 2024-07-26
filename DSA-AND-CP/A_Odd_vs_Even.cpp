@@ -123,7 +123,19 @@ Saurav:Hello Jarvis !!
 
 void jarvis()
 {
-    
+    int n;
+    cin>>n;
+    if(n%2!=0){
+        cout<<"Odd"<<endl;
+        return;
+    }
+    else if(n%4==0){
+        cout<<"Even"<<endl;
+        return;
+    }
+    else{
+        cout<<"Same"<<endl;
+    }
 }
 
 int32_t main()

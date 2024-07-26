@@ -120,11 +120,17 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
-
-void jarvis()
-{
-    
+void sumMatricesRecursively(const vector<int>& a, int &sum, int c, int j,int &k) {
+    // Move to the next column
+    if (j + 1 <=c) {
+        sumMatricesRecursively(a, sum, c, j + 1,k);
+    }
+    if(k>0){
+        sum+=a[j];
+        k--;
+    }
 }
+
 
 int32_t main()
 {
@@ -133,12 +139,16 @@ int32_t main()
     using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
-    int q = 1;
-    cin >> q;
-    while (q--)
-    {
-        jarvis();
-    }
+    int n,m;
+    cin>>n>>m;
+
+    r_vector(v,n);
+
+    int sum=0;
+    sumMatricesRecursively(v,sum,n,1,m);
+
+
+    cout<<sum<<endl;
 
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(end - start);

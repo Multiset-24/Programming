@@ -111,19 +111,75 @@ vector<int> Primes(int n)
 #define endl '\n'
 
 /*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
+　　　　　　　　　　　 ∧＿∧
+　　　　　 ∧＿∧ 　（´<_｀ ）　 Saurav:Welcome to My Coding Space!
+　　　　 （ ´_ゝ`）　/　 ⌒|   Jarvis:Ok master !!
 　　　　／　　　＼　 　  |　|
 　　　 /　　 /￣￣￣￣/　　|
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
+　 　　　＼/＿＿＿＿/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+int patty[51];
+int level[51];
+
+int Pcount(int l, int x)
+{
+    if (l == 0)
+        return x >= 0 ? 1 : 0;
+    if (x == 0)
+        return 0;
+
+    if (x < level[l - 1] + 1)
+        return Pcount(l - 1, x - 1);
+    x -= (level[l - 1] + 2);
+    if (x < 1)
+        return patty[l - 1] + 1;
+
+    if (x < level[l - 1] + 1)
+        return patty[l - 1] + 1 + Pcount(l - 1, x);
+
+    return 2 * patty[l - 1] + 1;
+}
+
+int Pcount2(int l, int x) {
+    if (l == 0) {
+        return x >= 0 ? 1 : 0;
+    } else if (x == 0) {
+        return 0;
+    } else if (x <= level[l-1]) {
+        return Pcount2(l-1, x-1);
+    } else if (x == 1 + level[l-1]) {
+        return patty[l-1] + 1;
+    } else if (x <= 1 + 2 * level[l-1]) {
+        return patty[l-1] + 1 + Pcount2(l-1, x-2-level[l-1]);
+    } else {
+        return 2 * patty[l-1] + 1;
+    }
+}
 
 void jarvis()
 {
+    memset(patty, 0, sizeof(patty));
+    memset(level, 0, sizeof(level));
+
+    patty[0] = level[0] = 1;
+
+    for (int i = 1; i <51; i++)
+    {
+        patty[i] = 2 * patty[i - 1] + 1;
+        level[i] = 2 * level[i - 1] + 3;
+    }
+
     
+    for(int l=0;l<=50;l++){
+        for(int x=1;x<=2*level[l-1]+3;x++){
+            if(Pcount(l,x)!=Pcount2(l,x)){
+                cout<<l<<" "<<x<<endl;
+                break;
+            }
+        }
+    }
+
 }
 
 int32_t main()
@@ -134,7 +190,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

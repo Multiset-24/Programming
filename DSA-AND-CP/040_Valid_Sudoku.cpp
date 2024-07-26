@@ -110,20 +110,99 @@ vector<int> Primes(int n)
 
 #define endl '\n'
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
+bool col_check(vector<vector<int>> sudoku)
+{
+    for (int i = 1; i <= 9; i++)
+    {
+        set<int> seen;
+        for (int j = 1; j <= 9; j++)
+        {
+            int x = sudoku[j][i];
+            if (seen.find(x) != seen.end())
+            {
+                return false;
+            }
+            else
+            {
+                seen.insert(x);
+            }
+        }
+    }
 
+    return true;
+}
+
+bool row_check(vector<vector<int>> sudoku)
+{
+    for (int i = 1; i <= 9; i++)
+    {
+        set<int> seen;
+        for (int j = 1; j <= 9; j++)
+        {
+            int x = sudoku[i][j];
+            if (seen.find(x) != seen.end())
+            {
+                return false;
+            }
+            else
+            {
+                seen.insert(x);
+            }
+        }
+    }
+
+    return true;
+}
+
+bool cube_check(vector<vector<int>> sudoku)
+{
+    for (int i = 1; i <= 9; i++)
+    {
+        for (int j = 1; j <= 9; j++)
+        {
+             set<int> seen;
+
+            if (i + 2 > 9 || j + 2 > 9 || i < 1 || j < 1)
+                continue;
+
+            for (int k = i; k <= i + 2; k++)5
+            {
+                for (int l = j; l <= j + 2; l++)
+                {
+                    int x = sudoku[l][j];
+                    if (seen.find(x) != seen.end())
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        seen.insert(x);
+                    }
+                }
+            }
+        }
+    }
+
+    return true;
+}
 void jarvis()
 {
-    
+    vector<vector<int>> sudoku(10, vector<int>(10, 0));
+
+    for (int i = 1; i <= 9; i++)
+    {
+        for (int j = 1; j <= 9; j++)
+        {
+           cin>>sudoku[i][j];
+        }
+    }
+
+    bool flag = (col_check(sudoku) && row_check(sudoku));
+
+    if (flag == true)
+        cout << "VALID";
+    else
+        cout << "INVALID";
 }
 
 int32_t main()
@@ -134,7 +213,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

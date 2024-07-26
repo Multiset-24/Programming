@@ -100,6 +100,19 @@ vector<int> Primes(int n)
     return primes;
 }
 
+bool is_prime(int n){
+    if(n==0 || n==1){
+        return false;
+    }
+
+    for(int i=2; i*i<=n;i++){
+        if(n%i==0){
+            return false;
+        }
+    }
+
+    return true;
+}
 // Debugging macro
 #define DEBUG
 #ifdef DEBUG
@@ -110,20 +123,22 @@ vector<int> Primes(int n)
 
 #define endl '\n'
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
-
 void jarvis()
 {
-    
+    int n;
+    cin>>n;
+    int cnt=1;
+    vector<int>ans;
+    for(int i=2;i<55555 && cnt<=55;i++){
+        if(is_prime(i) && (i-1)%5==0){
+            ans.push_back(i);
+            cnt++;
+        }
+    }
+
+    for(int i=0;i<n;i++){
+        cout<<ans[i]<<" ";
+    }
 }
 
 int32_t main()
@@ -134,7 +149,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

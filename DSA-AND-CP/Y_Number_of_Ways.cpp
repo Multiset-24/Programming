@@ -120,10 +120,17 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
-
+int rec(int x){
+    if(x==1 || x==0) return 1;
+    if(x<0) return 0;
+    return rec(x-1)+rec(x-2)+rec(x-3);
+}
 void jarvis()
 {
-    
+    int n,m;
+    cin>>n>>m;
+
+    cout<<rec(m-n);
 }
 
 int32_t main()
@@ -134,7 +141,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

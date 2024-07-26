@@ -49,6 +49,7 @@ int binpow(int a, int b)
 
     return ans;
 }
+
 vector<pi> Prime_factors(int n)
 {
     vector<pi> factors;
@@ -71,34 +72,6 @@ vector<pi> Prime_factors(int n)
 
     return factors;
 }
-vector<int> Primes(int n)
-{
-    vector<bool> is_prime(n + 1, true);
-
-    is_prime[0] = is_prime[1] = false;
-
-    for (int i = 2; i * i <= n; i++) // Sieve of Eratosthenes
-    {
-        if (is_prime[i])
-        {
-            for (int j = i * i; j <= n; j += i)
-            {
-                is_prime[j] = false;
-            }
-        }
-    }
-
-    vector<int> primes;
-    for (int i = 2; i <= n; i++)
-    {
-        if (is_prime[i])
-        {
-            primes.push_back(i);
-        }
-    }
-
-    return primes;
-}
 
 // Debugging macro
 #define DEBUG
@@ -110,20 +83,37 @@ vector<int> Primes(int n)
 
 #define endl '\n'
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
-
 void jarvis()
 {
+    int n;
+    cin >> n;
+
+    int cnt = 0;
     
+    while (n % 3 == 0)
+    {
+        while (n % 6 == 0)
+        {
+            n /= 6;
+            cnt++;
+        }
+
+        if (n % 3 == 0)
+        {
+            n /= 3;
+            cnt += 2;
+        }
+    }
+
+    if (n != 1)
+    {
+        cout << -1 << endl;
+        return;
+    }
+    else
+    {
+        cout << cnt << endl;
+    }
 }
 
 int32_t main()

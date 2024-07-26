@@ -3,36 +3,29 @@ using namespace std;
 
 #define mod 1000000007
 #define int long long
-typedef pair<int, int> pi;
-#define u_mp unordered_map
-#define u_st unordered_set
-#define r_vector(v, n)           \
-    vector<int> v(n + 1, 0);     \
-    for (int i = 1; i <= n; i++) \
-        cin >> v[i];
-template <typename T>
+typedef pair<int,int> pi;
+#define u_mp unordered_map 
+#define u_st unordered_set 
+#define r_vector(v, n) vector<int> v(n+1,0); for(int i = 1; i <=n; i++) cin >> v[i];
+template<typename T>
 
 // Function templates for reading input
-void read(T &t)
-{
+void read(T& t) {
     cin >> t;
 }
-template <typename T, typename... Args>
-void read(T &t, Args &...args)
-{
+template<typename T, typename... Args>
+void read(T& t, Args&... args) {
     cin >> t;
     read(args...);
 }
-// This is policy based data structure for ordered sets which gives additional features like find_by_order(x) and order_of_key(x);
+//This is policy based data structure for ordered sets which gives additional features like find_by_order(x) and order_of_key(x);
 
-int gcd(int a, int b)
-{
-    if (a == 0)
-    {
+int gcd(int a,int b){
+    if(a==0){
         return b;
     }
 
-    return gcd(b % a, a);
+    return gcd(b%a,a);
 }
 
 // Debugging macro
@@ -45,61 +38,65 @@ int gcd(int a, int b)
 
 #define endl '\n'
 
-void jarvis()
-{
-    int n;
-    cin >> n;
 
-    r_vector(v, n);
-    if (n == 2)
-    {
-        cout << "NO" << endl;
-        return;
-    }
-    bool flag = false;
-    for (int i = 1; i <= n - 1; i++)
-    {
-        if (v[i] != v[i + 1])
-        {
-            flag = true;
-            break;
-        }
+int helper(string &s,char a,char b){
+    int n=s.size();
+    int min_op=INT_MAX;
+    char prev='-1';
+    int prev_idx=-1;
+
+   for(int i=0;i<n;i++){
+    if(s[i]==a){
+        prev=a;
+        prev_idx=i;
     }
 
-    if (!flag)
-    {
-        cout << "NO" << endl;
-        return;
+    if(prev!='-1' && s[i]==b){
+        int op=(n-prev_idx-2);
+        min_op=min(min_op,op);
     }
-
-    cout << "YES" << endl;
-    string ans = "";
-
-    for (int i = 1; i <= n; i++)
-    {
-        if (i == 2)
-        {
-            ans.push_back('R');
-        }
-        else
-        {
-            ans.push_back('B');
-        }
-    }
-    cout << ans << endl;
+   }
+    return min_op;
 }
 
-int32_t main()
-{
+void jarvis(){
+   string s;
+   cin>>s;
+    int n=s.size();
+   //we need to find the minimum moves that we need to perform to form last 2 digits as 25 or 50 or 00 or 75 so we check for each of them and find the minm number of operations
+
+   //for 00 
+
+   char prev='-1';
+    int prev_idx=-1;
+    int min_op=INT_MAX;
+   for(int i=0;i<n;i++){
+    if(s[i]=='0' && prev=='-1'){
+        prev='0';
+        prev_idx=i;
+    }
+    
+    if(prev!='-1' && s[i]=='0'){
+        int op=(n-prev_idx-2);
+        min_op=min(min_op,op);
+        prev_idx=i;
+    }
+   }
+
+   min_op = min({min_op, (int)helper(s, '2', '5'), (int)helper(s, '5', '0'), (int)helper(s, '7', '5')});
+
+   cout<<min_op<<endl;
+}
+
+int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
     int q;
-    cin >> q;
-    while (q--)
-    {
+    cin>>q;
+    while(q--){
         jarvis();
     }
 

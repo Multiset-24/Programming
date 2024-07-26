@@ -120,10 +120,39 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+void rec(vector<int>exp,int x,int ans,int i,bool &flag){
+    if(i==exp.size()){
+        if(ans==x){
+            flag=true;
+        }
+        return;
+    }
+    rec(exp,x,ans+exp[i],i+1,flag);//add
+    rec(exp,x,ans-exp[i],i+1,flag);//subtract
 
+    return;
+}
 void jarvis()
 {
+    int n,x;
+    cin>>n>>x;
+
+    vector<int>exp(n,0);
+
+    for(int i=0;i<n;i++){
+        cin>>exp[i];
+    }
+    int ans=exp[0];
+    bool flag=false;
+    rec(exp,x,ans,1,flag);
     
+    if(flag==true){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
+    return;
 }
 
 int32_t main()
@@ -134,7 +163,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

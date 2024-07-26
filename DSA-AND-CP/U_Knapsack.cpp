@@ -120,10 +120,36 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+int ans=INT_MIN;
 
+void rec(vector<int>w,vector<int>p,int wu,int i,int pr,int k){
+    if(i==w.size()){
+        if(wu<=k){
+            ans=max(ans,pr);
+        }
+        return;
+    }
+
+    rec(w,p,wu+w[i],i+1,pr+p[i],k);//pick it
+
+    rec(w,p,wu,i+1,pr,k);//no pick it
+
+    return ;
+}
 void jarvis()
 {
-    
+    int n,k;
+    cin>>n>>k;
+
+    vector<int>w(n,0),p(n,0);
+
+    for(int i=0;i<n;i++){
+        cin>>w[i]>>p[i];
+    }
+
+    rec(w,p,0,0,0,k);//initial weight=0, initial index=0, intial profit=0;
+
+    cout<<ans<<endl;
 }
 
 int32_t main()
@@ -134,7 +160,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

@@ -121,9 +121,43 @@ Saurav:Hello Jarvis !!
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
 
+void rec(string t,int &cnt,int &ans,int pos_s,int i,int pos_t){
+    if(i==t.size()){
+        if(pos_s==pos_t) ans++;
+        cnt++;
+        return;
+    }
+
+    if(t[i]=='+'){
+        rec(t,cnt,ans,pos_s,i+1,pos_t+1);
+    }
+    else if(t[i]=='-'){
+        rec(t,cnt,ans,pos_s,i+1,pos_t-1);
+    }else{
+        rec(t,cnt,ans,pos_s,i+1,pos_t+1);
+        rec(t,cnt,ans,pos_s,i+1,pos_t-1);
+    }
+
+    return ;
+}
 void jarvis()
 {
-    
+    string s,t;
+    cin>>s>>t;
+
+    int cnt=0;
+    int ans=0;
+    int pos_s=0;
+    int pos_t=0;
+    for(auto c:s){
+        if(c=='+') pos_s++;
+        else pos_s--;
+
+    }
+
+    rec(t,cnt,ans,pos_s,0,pos_t);
+
+    cout<<setprecision(20)<<(long double)(ans)/cnt<<endl;
 }
 
 int32_t main()
@@ -134,7 +168,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

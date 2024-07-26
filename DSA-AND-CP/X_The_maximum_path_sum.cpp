@@ -120,10 +120,39 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+int ans=INT_MIN;
 
+void rec(vector<vector<int>>matrix,int i,int j,int sum){
+    int n=matrix.size();
+    int m=matrix[0].size();
+
+    if(i==n-1 && j>=m){
+        ans=max(ans,sum);
+        return;
+    }
+    else if(i>=n || j>=m) return ;
+
+    rec(matrix,i+1,j,sum+matrix[i][j]);
+    rec(matrix,i,j+1,sum+matrix[i][j]);
+
+    return ;
+}
 void jarvis()
 {
-    
+    int n,m;
+    cin>>n>>m;
+
+    vector<vector<int>>matrix(n,vector<int>(m,0));
+
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>matrix[i][j];
+        }
+    }
+
+    rec(matrix,0,0,0);
+
+    cout<<ans<<endl;
 }
 
 int32_t main()
@@ -134,7 +163,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

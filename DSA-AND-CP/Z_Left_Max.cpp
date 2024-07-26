@@ -120,10 +120,24 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+void rec(vector<int>&v,int left_max,int i){
+    if(i>=v.size()) return;
 
+    left_max=max(left_max,v[i]);
+    cout<<left_max<<" ";
+
+    rec(v,left_max,i+1);
+
+    return;
+}
 void jarvis()
 {
-    
+    int n;
+    cin>>n;
+    vector<int>v(n,0);
+    for(int i=0;i<n;i++) cin>>v[i];
+
+    rec(v,v[0],0);
 }
 
 int32_t main()
@@ -134,7 +148,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

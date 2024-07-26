@@ -120,10 +120,19 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+int __log(int n){
+    if(n==1){
+        return 0;
+    }
 
+    return 1+__log(n/2);
+}
 void jarvis()
 {
-    
+    int n;
+    cin>>n;
+
+    cout<<__log(n)<<endl;
 }
 
 int32_t main()
@@ -134,7 +143,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

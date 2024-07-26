@@ -120,10 +120,30 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
+bool _pallindrome(vector<int>&a,int i,int j){
 
+    if(i>=j) return true;
+
+    if(a[i]==a[j]){
+        return _pallindrome(a,i+1,j-1);
+    }
+    else{
+        return false;
+    }
+}
 void jarvis()
 {
-    
+    int n;
+    cin>>n;
+
+    r_vector(v,n);
+
+    if(_pallindrome(v,1,n)){
+        cout<<"YES";
+    }
+    else{
+        cout<<"NO";
+    }
 }
 
 int32_t main()
@@ -134,7 +154,7 @@ int32_t main()
     auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

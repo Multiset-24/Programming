@@ -34,71 +34,6 @@ int gcd(int a, int b)
 
     return gcd(b % a, a);
 }
-int binpow(int a, int b)
-{
-    int ans = 1;
-    while (b > 0)
-    {
-        if (b & 1)
-        {
-            ans *= a;
-        }
-        a *= a;
-        b /= 2;
-    }
-
-    return ans;
-}
-vector<pi> Prime_factors(int n)
-{
-    vector<pi> factors;
-
-    for (int i = 2; i * i <= n; i++)
-    {
-        int count = 0;
-        while (n % i == 0)
-        {
-            count++;
-            n /= i;
-        }
-        factors.push_back({i, count});
-    }
-
-    if (n > 1)
-    {
-        factors.push_back({n, 1});
-    }
-
-    return factors;
-}
-vector<int> Primes(int n)
-{
-    vector<bool> is_prime(n + 1, true);
-
-    is_prime[0] = is_prime[1] = false;
-
-    for (int i = 2; i * i <= n; i++) // Sieve of Eratosthenes
-    {
-        if (is_prime[i])
-        {
-            for (int j = i * i; j <= n; j += i)
-            {
-                is_prime[j] = false;
-            }
-        }
-    }
-
-    vector<int> primes;
-    for (int i = 2; i <= n; i++)
-    {
-        if (is_prime[i])
-        {
-            primes.push_back(i);
-        }
-    }
-
-    return primes;
-}
 
 // Debugging macro
 #define DEBUG
@@ -110,20 +45,59 @@ vector<int> Primes(int n)
 
 #define endl '\n'
 
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
-
 void jarvis()
 {
-    
+    int x, n;
+    cin >> x >> n;
+
+    int rem = n % 4;
+    int m = n / 4;
+    if (x % 2 == 0)
+    {
+        if (rem == 0)
+        {
+            cout << x << endl;
+            return;
+        }
+        else if (rem == 1)
+        {
+            cout << x - (1 + m * 4) << endl;
+            return;
+        }
+        else if (rem == 2)
+        {
+            cout << x + 1 << endl;
+            return;
+        }
+        else
+        {
+            cout << x + 4 * (m + 1)<<endl;
+            return;
+        }
+    }
+    else
+    {
+        if (rem == 0)
+        {
+            cout << x << endl;
+            return;
+        }
+        else if (rem == 1)
+        {
+            cout << x + (1 + m * 4) << endl;
+            return;
+        }
+        else if (rem == 2)
+        {
+            cout << x - 1 << endl;
+            return;
+        }
+        else
+        {
+            cout << x - 4 * (m + 1) << endl;
+            return;
+        }
+    }
 }
 
 int32_t main()
@@ -133,7 +107,7 @@ int32_t main()
     using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
-    int q = 1;
+    int q;
     cin >> q;
     while (q--)
     {

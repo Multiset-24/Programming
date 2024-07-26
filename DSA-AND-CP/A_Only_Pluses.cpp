@@ -123,7 +123,17 @@ Saurav:Hello Jarvis !!
 
 void jarvis()
 {
-    
+    int a,b,c;
+    cin>>a>>b>>c;
+
+    vector<int>num={a,b,c};
+    sort(num.begin(),num.end());
+    for(int i=0;i<5;i++){
+        num[0]++;
+        sort(num.begin(),num.end());
+    }
+
+    cout<<num[0]*num[1]*num[2]<<endl;;
 }
 
 int32_t main()

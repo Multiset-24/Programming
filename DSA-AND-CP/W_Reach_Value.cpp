@@ -120,10 +120,23 @@ Saurav:Hello Jarvis !!
 　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
-
+bool rec(int i,int n){
+    if(i==n){
+        return true;
+    }
+    else if(i>n) return false;
+   
+    return (rec(i*10,n) || rec(i*20,n));
+}
 void jarvis()
 {
-    
+    int n;
+    cin>>n;
+
+    if(rec(1,n))cout<<"YES";
+    else cout<<"NO";
+
+    cout<<endl;
 }
 
 int32_t main()
