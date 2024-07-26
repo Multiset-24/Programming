@@ -1,3 +1,13 @@
+/*---------------------------------------------------------------------------------------------------
+Saurav:Hello Jarvis !!
+　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Hello Master !! you gotta do this problem because your hypothetical 
+　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣    hardworking crush who is based on the real person 
+　　　　 （ ´_ゝ`）　/　 ⌒|           must be studying hard.....
+　　　　／　　　＼　 　  |　|
+　　　 /　　 /￣￣￣￣/　　|
+　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
+　 　　　＼/_______/　（u　⊃
+---------------------------------------------------------------------------------------------------*/
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,116 +20,22 @@ typedef pair<int, int> pi;
     vector<int> v(n + 1, 0);     \
     for (int i = 1; i <= n; i++) \
         cin >> v[i];
-template <typename T>
-
-// Function templates for reading input
-void read(T &t)
-{
-    cin >> t;
-}
-template <typename T, typename... Args>
-void read(T &t, Args &...args)
-{
-    cin >> t;
-    read(args...);
-}
-// This is policy based data structure for ordered sets which gives additional features like find_by_order(x) and order_of_key(x);
-
-int gcd(int a, int b)
-{
-    if (a == 0)
-    {
-        return b;
-    }
-
-    return gcd(b % a, a);
-}
-int binpow(int a, int b)
-{
-    int ans = 1;
-    while (b > 0)
-    {
-        if (b & 1)
-        {
-            ans *= a;
-        }
-        a *= a;
-        b /= 2;
-    }
-
-    return ans;
-}
-vector<pi> Prime_factors(int n)
-{
-    vector<pi> factors;
-
-    for (int i = 2; i * i <= n; i++)
-    {
-        int count = 0;
-        while (n % i == 0)
-        {
-            count++;
-            n /= i;
-        }
-        factors.push_back({i, count});
-    }
-
-    if (n > 1)
-    {
-        factors.push_back({n, 1});
-    }
-
-    return factors;
-}
-vector<int> Primes(int n)
-{
-    vector<bool> is_prime(n + 1, true);
-
-    is_prime[0] = is_prime[1] = false;
-
-    for (int i = 2; i * i <= n; i++) // Sieve of Eratosthenes
-    {
-        if (is_prime[i])
-        {
-            for (int j = i * i; j <= n; j += i)
-            {
-                is_prime[j] = false;
-            }
-        }
-    }
-
-    vector<int> primes;
-    for (int i = 2; i <= n; i++)
-    {
-        if (is_prime[i])
-        {
-            primes.push_back(i);
-        }
-    }
-
-    return primes;
-}
 
 // Debugging macro
+#ifndef ONLINE_JUDGE
 #define DEBUG
-#ifdef DEBUG
-#define debug(x) cout << #x << " = " << x << endl
-#else
-#define debug(x)
 #endif
 
+#ifdef DEBUG
+#define print_vector(v) { cout << #v << " = ["; for (auto &elem : v) cout << elem << " "; cout << "]" << endl; }
+#define print_map(m) { cout << #m << " = {"; for (auto &pair : m) cout << "{" << pair.first << ": " << pair.second << "} "; cout << "}" << endl; }
+#define prin9t_2dvector(v) { cout << #v << " = [" << endl; for (auto &row : v) { cout << "  ["; for (auto &elem : row) cout << elem << " "; cout << "]" << endl; } cout << "]" << endl; }
+#else
+#define print_vector(v)
+#define print_map(m)
+#define print_2dvector(v)
+#endif
 #define endl '\n'
-
-/*---------------------------------------------------------------------------------------------------
-Saurav:Hello Jarvis !!
-　 ￣￣\　　　　　　　 ∧＿∧    Jarvis:Namaste Master mai aapki kaise help kar skta hun !!
-　　　  \　 ∧＿∧ 　（´<_｀ ）/￣￣
-　　　　 （ ´_ゝ`）　/　 ⌒| 
-　　　　／　　　＼　 　  |　|
-　　　 /　　 /￣￣￣￣/　　|
-　 ＿_(__ﾆつ/　   _ / .| .|＿＿＿＿
-　 　　　＼/_______/　（u　⊃
----------------------------------------------------------------------------------------------------*/
 
 void jarvis()
 {
@@ -130,20 +46,13 @@ int32_t main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    using namespace std::chrono;
-    auto start = high_resolution_clock::now();
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();
     }
-
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(end - start);
-
-    cerr << "Time taken: " << duration.count() << " microseconds" << endl;
     return 0;
 }
 
