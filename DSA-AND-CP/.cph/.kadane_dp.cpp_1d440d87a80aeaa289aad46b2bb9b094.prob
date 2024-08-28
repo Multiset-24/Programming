@@ -1,0 +1,1 @@
+{"name":"Local: kadane_dp","url":"c:\\Users\\soura\\OneDrive\\Desktop\\Programming\\DSA-AND-CP\\kadane_dp.cpp","tests":[{"id":1724523548659,"input":"1\n12 4\n10 0 -1 -2 3 6 -9 -20 0 50 10 20","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\soura\\OneDrive\\Desktop\\Programming\\DSA-AND-CP\\kadane_dp.cpp","group":"local","local":true}
