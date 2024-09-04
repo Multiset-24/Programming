@@ -39,33 +39,7 @@ typedef pair<int, int> pi;
 
 void jarvis()
 {
-    int x,y,k;
-    cin>>x>>y>>k;
-
-    int cnt=0;
-    if(k>=x && k>=y && x!=0 && y!=0){
-        cout<<2<<endl;
-        return;
-    }
     
-    if(x>y){
-        if(x%k==0){
-            cnt+=(((x/k)*2))-1;
-        }
-        else{
-            cnt+=((x/k)*2)+1;
-        }
-    }
-    else if(x==y){
-        cnt+=(x/k)*2;
-    }
-    else{
-        if(y%k!=0){
-            cnt+=((y+k-1)/k)*2;
-        }
-        else cnt+=((y/k)*2)+1;
-    }
-    cout<<cnt<<endl;
 }
 
 int32_t main()
