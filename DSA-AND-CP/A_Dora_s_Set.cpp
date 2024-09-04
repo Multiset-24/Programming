@@ -39,7 +39,19 @@ typedef pair<int, int> pi;
 
 void jarvis()
 {
-    
+    int l,r;
+    cin>>l>>r;
+
+    int cnt=0;
+
+    for(int i=l;i<=r;i++){
+        if(i&1 && i+2<=r){
+            i+=2;
+            cnt++;
+        }
+    }
+
+    cout<<cnt<<endl;
 }
 
 int32_t main()

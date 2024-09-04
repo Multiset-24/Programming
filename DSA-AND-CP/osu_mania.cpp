@@ -39,7 +39,24 @@ typedef pair<int, int> pi;
 
 void jarvis()
 {
-    
+    int n;
+    cin>>n;
+
+    vector<vector<char>>board(n,vector<char>(4,'.'));
+    vector<int>notes;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<4;j++){
+            cin>>board[i][j];
+            if(board[i][j]=='#'){
+                notes.push_back(j+1);
+            }
+        }
+    }
+    reverse(notes.begin(),notes.end());
+    for(auto it:notes){
+        cout<<it<<" ";
+    }
+    cout<<endl;
 }
 
 int32_t main()

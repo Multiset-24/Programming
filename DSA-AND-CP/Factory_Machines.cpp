@@ -9,6 +9,7 @@ Saurav:Hello Jarvis !!
 　 　　　＼/_______/　（u　⊃
 ---------------------------------------------------------------------------------------------------*/
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define mod 1000000007
@@ -37,9 +38,45 @@ typedef pair<int, int> pi;
 #endif
 #define endl '\n'
 
+int check(int time,vector<int>&times,int t){
+    int cnt=0;
+
+    for(auto it:times){
+        cnt+=(time/it);
+    }
+    return cnt>=t;
+}
 void jarvis()
 {
-    
+   
+    int n,t;
+    cin>>n>>t;
+
+    vector<int>times;
+
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        times.push_back(x);
+    }
+    sort(times.begin(),times.end());
+    int lo=0;
+    int hi=times[0]*t;
+    int ans=-1;
+    while(lo<=hi){
+        int mid=lo+(hi-lo)/2;
+
+        if(check(mid,times,t)){
+            ans=mid;
+            hi=mid-1;
+        }
+        else{
+            lo=mid+1;
+        }
+    }
+
+
+    cout<<ans<<endl;
 }
 
 int32_t main()
@@ -48,7 +85,7 @@ int32_t main()
     cin.tie(NULL);
 
     int q = 1;
-    cin >> q;
+    // cin >> q;
     while (q--)
     {
         jarvis();

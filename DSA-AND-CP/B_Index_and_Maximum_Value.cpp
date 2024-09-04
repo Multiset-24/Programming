@@ -39,7 +39,40 @@ typedef pair<int, int> pi;
 
 void jarvis()
 {
-    
+    int n,q;
+    cin>>n>>q;
+    int maxm=INT_MIN;
+
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        maxm=max(maxm,x);
+    }
+    vector<int>ans;
+    while(q--){
+        char c;
+        int l,r;
+        cin>>c>>l>>r;
+
+        if(maxm>=l && maxm<=r){
+            if(c=='+'){
+                maxm++;
+                ans.push_back(maxm);
+            }
+            else{
+                maxm--;
+                ans.push_back(maxm);
+            }
+        }
+        else{
+            ans.push_back(maxm);
+        }
+    }
+
+    for(auto it:ans){
+        cout<<it<<" ";
+    }
+    cout<<endl;
 }
 
 int32_t main()

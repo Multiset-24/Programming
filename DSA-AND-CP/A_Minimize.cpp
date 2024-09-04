@@ -39,7 +39,10 @@ typedef pair<int, int> pi;
 
 void jarvis()
 {
-    
+    int a,b;
+    cin>>a>>b;
+
+    cout<<b-a<<endl;
 }
 
 int32_t main()
