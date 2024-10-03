@@ -1,0 +1,1 @@
+//solved leetcode 1700 and 232

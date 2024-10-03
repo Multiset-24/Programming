@@ -1,0 +1,5 @@
+BACKTRACKING
+
+1.It is one of the technique to improve the brute force.
+2.In this technique we basically choose to rectify the changes we made when we moved forward while we come back to the previous step
+3.In this if at some point it is detected that this case is not beneficial for us then we prune that case like TVA.

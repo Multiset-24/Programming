@@ -1,0 +1,3 @@
+all questions are related to leetcode 
+leetcode-237,876,19,160,141,142
+also floyd's algorithm was also detected i.e useful for finding cycle in linked list
